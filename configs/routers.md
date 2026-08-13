@@ -13,13 +13,18 @@ exit
 router ospf 1
  network 192.169.10.0 0.0.0.255 area 0
  network 200.100.10.0 0.0.0.3 area 0
-exit
+ exit
 int S0/3/0
  ip ospf network point-to-point
-exit
+ ip nat outside
+ exit
 int g0/0
  ip address 192.168.10.1 255.255.255.0
  no shut
+ ip nat inside
+ exit
+access-list 1 permit 192.169.10.0 0.0.0.255
+
 
 
 ## PromesasIT_RP
