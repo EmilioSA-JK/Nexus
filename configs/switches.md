@@ -5,24 +5,24 @@ en
 config t
 hostname Spoke_Switch
 vlan 10
- name CLIENTS
+name CLIENTS
 vlan 20
- name IOT
+name IOT
 vlan 30
- name DMZ
+name DMZ
 interface fa0/1
- switchport mode acceess
- switchport access vlan 10
+switchport mode access
+switchport access vlan 10
 interface fa0/3
- switchport mode access
- switchport access vlan 20
+switchport mode access
+switchport access vlan 20
 interface fa0/2
- switchport mode access
- swichport access vlan 20
+switchport mode access
+switchport access vlan 20
 int g0/1
- switchport mode trunk
- switchport trunk allowed vlan 10,20,30
- exit
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+exit
 
 ## CLIENTS_Switch
 en

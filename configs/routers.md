@@ -4,6 +4,7 @@
 enable
 config t
 hostname Nexus_RP
+
 int s0/3/0
 ip address 200.100.10.1 255.255.255.252
 encapsulation frame-relay
@@ -11,20 +12,34 @@ no shutdown
 exit
 
 router ospf 1
- network 192.169.10.0 0.0.0.255 area 0
- network 200.100.10.0 0.0.0.3 area 0
- exit
-int S0/3/0
- ip ospf network point-to-point
- ip nat outside
- exit
-int g0/0
- ip address 192.168.10.1 255.255.255.0
- no shut
- ip nat inside
- exit
-access-list 1 permit 192.169.10.0 0.0.0.255
+network 192.168.10.0 0.0.0.255 area 0
+network 200.100.10.0 0.0.0.3 area 0
+exit
 
+int S0/3/0
+ip ospf network point-to-point
+ip nat outside
+exit
+
+int g0/0
+no shut
+exit
+access-list 1 permit 192.168.10.0 0.0.0.255
+
+interface g0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.192
+ip nat inside
+
+interface g0/0.20
+encapsulation dot1Q 20
+ip address 192.168.10.65 255.255.255.192
+ip nat inside
+
+interface g0/0.30
+encapsulation dot1Q 30
+ip address 192.168.10.129 255.255.255.192
+ip nat inside
 
 
 ## PromesasIT_RP
@@ -39,15 +54,15 @@ no shutdown
 exit
 
 router ospf 1
- network 172.16.0.0 0.0.255.255 area 0
- network 200.100.10.0 0.0.0.3 area 0
+network 172.16.0.0 0.0.255.255 area 0
+network 200.100.10.0 0.0.0.3 area 0
 exit
 int S0/3/0
- ip ospf network point-to-point
- exit
+ip ospf network point-to-point
+exit
 int g0/0
- ip address 172.16.10.1 255.255.0.0
- no shut
+ip address 172.16.10.1 255.255.0.0
+no shut
 
 
 
