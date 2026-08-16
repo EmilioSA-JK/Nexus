@@ -77,17 +77,25 @@ en
 config t
 hostname IoT_Switch
 
-int g0/1
+int fa0/3
 switchport mode access
 switchport access vlan 20
 
-int g0/2
-switchport mode trunk
-switchport trunk allowed vlan 10,20
+int fa0/2
+switchport mode access 
+switchport access vlan 20
 
 int fa0/1 
 switchport mode trunk
 switchport trunk allowed vlan 10,20
+
+int fa0/4 
+switchport access vlan 20
+
+int fa0/5
+switchport access vlan 20
+
+
 
 
 

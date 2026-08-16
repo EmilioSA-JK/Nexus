@@ -29,16 +29,19 @@ access-list 1 permit 192.168.10.0 0.0.0.255
 interface g0/0.10
 encapsulation dot1Q 10
 ip address 192.168.10.1 255.255.255.192
+ip helper-address 192.168.10.188
 ip nat inside
 
 interface g0/0.20
 encapsulation dot1Q 20
 ip address 192.168.10.65 255.255.255.192
+ip helper-address 192.168.10.188
 ip nat inside
 
 interface g0/0.30
 encapsulation dot1Q 30
 ip address 192.168.10.129 255.255.255.192
+ip helper-address 192.168.10.188
 ip nat inside
 
 
