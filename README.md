@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="docs/images/logo.png> witdh="200">
+    <img src="docs/images/logo.png> width="200">
     </p>
 
 # Nexus - Network Infrastructure
